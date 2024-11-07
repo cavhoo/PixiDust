@@ -1,6 +1,4 @@
-# PixiDust
-
-## Particle System for the pixi.js rendering framework
+# example
 
 To install dependencies:
 

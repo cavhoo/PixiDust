@@ -20,5 +20,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "pixi.js": "^8.5.2"
+  }
 }

@@ -1,0 +1,17 @@
+{
+  "name": "example",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bunx --bun vite",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "pixidust": "file:../",
+    "vite": "^5.4.10"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
