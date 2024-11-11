@@ -1,17 +1,27 @@
 # PixiDust
 
+<!--toc:start-->
+- [PixiDust](#pixidust)
+  - [Particle System for the pixi.js rendering framework](#particle-system-for-the-pixijs-rendering-framework)
+    - [Goal](#goal)
+    - [Roadmap](#roadmap)
+<!--toc:end-->
+
+![build](https://github.com/github/docs/actions/workflows/ci.yml/badge.svg?branch=main)
+
 ## Particle System for the pixi.js rendering framework
 
-To install dependencies:
+### Goal
 
-```bash
-bun install
-```
+The goal of this libray is to provide a flexible and powerful framework to create awesome particle systems
+without much thought. It should provide extensibility for customization and ease to implement new features
+if the use case requires it.
 
-To run:
 
-```bash
-bun run index.ts
-```
+### Roadmap
 
-This project was created using `bun init` in bun v1.1.34. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+* [ ] Basic particle functionality
+* [ ] Particle manipulators (Forces, Wells, Events)
+* [ ] Shaded particles (Vertex, Fragment)
+* [ ] Spine based particles (Allow spine animations on particles)
+* [ ] Publish to npm

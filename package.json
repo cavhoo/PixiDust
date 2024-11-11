@@ -4,10 +4,13 @@
   "type": "module",
   "devDependencies": {
     "bun-plugin-dts": "^0.3.0",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "pixi.js": "^8.5.2",
+    "vite": "^5.4.10"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "pixi.js": "^8.5.2"
   },
   "exports": {
     "types": "./dist/index.d.ts",
@@ -15,13 +18,11 @@
     "require": "./dist/index.cjs"
   },
   "scripts": {
+    "dev": "bunx --bun vite",
     "build": "bun run build.ts",
     "prepublishOnly": "bun run build"
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "pixi.js": "^8.5.2"
-  }
+  ]
 }
