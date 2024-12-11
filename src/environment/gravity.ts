@@ -14,7 +14,7 @@ export class Gravity extends Environment {
   protected force: Vector;
   constructor({ force }: GravityConfig) {
     super();
-    this.force = force.multiply(-1);
+    this.force = force;
   }
 
   public affect(particle: Particle): void {

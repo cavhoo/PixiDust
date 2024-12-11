@@ -1,3 +1,5 @@
+import type { Particle } from "../particle/particle";
+import type { Constructable } from "../types/constructable";
 import { Vector } from "../types/vector";
 import type { ParticleConfig } from "./particleConfig";
 
@@ -7,10 +9,12 @@ export interface EmitterConfig {
   readonly particleConfig: ParticleConfig;
   /** The direction the emitter should start emitting particles in. */
   readonly direction: Vector;
-  /** The start velocity of a particle when being emitted. */
-  readonly startVelocity: number;
   /** The total maximum amount of particles being rendered. */
   readonly maxParticleCount: number;
   /** Spawn rate per 1000ms. */
   readonly spawnRate: number;
+  /** Lifetime of the emitter in milliseconds. */
+  readonly lifetime: number;
+  /** The particle that the emitter should create. */
+  readonly particleClass: Constructable<Particle>;
 }

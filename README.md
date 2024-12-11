@@ -20,8 +20,8 @@ if the use case requires it.
 
 ### Roadmap
 
-* [ ] Basic particle functionality
-* [ ] Particle manipulators (Forces, Wells, Events)
+* [X] Basic particle functionality
+* [/] Particle manipulators (Forces, Wells, Events)
 * [ ] Shaded particles (Vertex, Fragment)
 * [ ] Spine based particles (Allow spine animations on particles)
 * [ ] Publish to npm
