@@ -1,3 +1,5 @@
+import type { Container } from "pixi.js";
+import type { Shape } from "../emitter/shapes/shape";
 import type { Particle } from "../particle/particle";
 import type { Constructable } from "../types/constructable";
 import { Vector } from "../types/vector";
@@ -17,4 +19,8 @@ export interface EmitterConfig {
   readonly lifetime: number;
   /** The particle that the emitter should create. */
   readonly particleClass: Constructable<Particle>;
+  /** Define the shape the particles should spawn in. Default: Spot. */
+  readonly spawnShape?: Shape;
+  /** Optional container to add the particles to. */
+  readonly particleContainer?: Container;
 }

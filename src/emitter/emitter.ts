@@ -2,6 +2,7 @@ import {
   Container,
   EventEmitter,
   Graphics,
+  nextPow2,
   Ticker,
   type ContainerOptions,
 } from "pixi.js";
@@ -11,6 +12,7 @@ import type { Environment } from "../environment/environment";
 import type { Modifier } from "../modifiers/modifer";
 import { Vector } from "../types/vector";
 import { gaussianRandom } from "../functions/randoms";
+import { Spot } from "./shapes/spot";
 
 export interface EmitterOptions extends EmitterConfig, ContainerOptions {
   environments?: Environment[];
@@ -42,6 +44,8 @@ export abstract class Emitter extends Container {
     spawnRate,
     lifetime,
     particleClass,
+    particleContainer,
+    spawnShape,
     ...rest
   }: EmitterOptions) {
     super(rest);
@@ -52,6 +56,8 @@ export abstract class Emitter extends Container {
       particleConfig,
       direction,
       lifetime,
+      spawnShape: spawnShape ?? new Spot(),
+      particleContainer: particleContainer ?? this,
     };
     this.ticker = Ticker.shared;
     this.environments = environments || [];
@@ -77,7 +83,7 @@ export class PixiDustEmitter extends Emitter {
     super(options);
     this.label = "PixiDustEmitter";
     const debug = new Graphics().rect(0, 0, 20, 20).fill(0xff00ff);
-    this.addChild(debug);
+    // this.addChild(debug);
   }
 
   public start(): void {
@@ -101,13 +107,23 @@ export class PixiDustEmitter extends Emitter {
         ...particleConfig,
         direction,
       });
+      const nextSpawn = this.config.spawnShape!.getSpawnPos();
+      p.position.set(
+        this.position.x + nextSpawn.x,
+        this.position.y + nextSpawn.y,
+      );
       this.particles.push(p);
-      this.addChild(p);
+      this.config.particleContainer!.addChild(p);
     } else {
       const deadParticle = this.particles.find((p) => p.isDead());
       if (deadParticle) {
+        const nextSpawn = this.config.spawnShape!.getSpawnPos();
         this.emit(ParticleEvents.Died, deadParticle);
         deadParticle.spawn(direction);
+        deadParticle.position.set(
+          this.position.x + nextSpawn.x,
+          this.position.y + nextSpawn.y,
+        );
       }
     }
   }
