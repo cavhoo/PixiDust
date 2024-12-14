@@ -31,7 +31,7 @@ export class Particle extends Container {
 
   protected config: ParticleConfig;
 
-  protected _particleTexture: Container;
+  protected _particleTexture!: Container;
 
   constructor({
     lifeTime,
