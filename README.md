@@ -7,7 +7,7 @@
     - [Roadmap](#roadmap)
 <!--toc:end-->
 
-![build](https://github.com/github/docs/actions/workflows/ci.yml/badge.svg?branch=main)
+[![CI](https://github.com/cavhoo/PixiDust/actions/workflows/ci.yml/badge.svg)](https://github.com/cavhoo/PixiDust/actions/workflows/ci.yml)
 
 ## Particle System for the pixi.js rendering framework
 
