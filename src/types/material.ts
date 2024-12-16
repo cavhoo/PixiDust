@@ -1,8 +1,8 @@
-import type { BLEND_MODES, Graphics, Sprite, Texture } from "pixi.js";
+import type { BLEND_MODES, ColorSource, Texture } from "pixi.js";
 
 export interface Material {
   /** The face of the particle */
-  readonly color?: string;
+  readonly color?: ColorSource;
   /** The texture of the particle. Overwrites the color. */
   readonly texture?: Texture;
   /** Name of the material. Used to swap between different materials. */

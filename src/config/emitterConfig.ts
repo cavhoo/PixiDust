@@ -10,7 +10,7 @@ export interface EmitterConfig {
   /** Configuration for each particle spawned by the emitter. */
   readonly particleConfig: ParticleConfig;
   /** The direction the emitter should start emitting particles in. */
-  readonly direction: Vector;
+  readonly direction: () => Vector;
   /** The total maximum amount of particles being rendered. */
   readonly maxParticleCount: number;
   /** Spawn rate per 1000ms. */

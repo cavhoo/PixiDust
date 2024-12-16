@@ -1,5 +1,6 @@
 import { Application, Assets, Color, Container, Texture } from "pixi.js";
 import {
+  gaussianRandom,
   Gravity,
   PixiDustEmitter,
   PixiDustParticle,
@@ -30,28 +31,28 @@ const main = async () => {
   // Create particle Emitter
   const emitter = new PixiDustEmitter({
     particleConfig: {
-      lifeTime: 180,
-      decayFactor: 2,
+      lifeTime: 100,
+      decayFactor: 3,
       useAlphaDecay: true,
       alphaDecay: { from: 1, to: 0 },
       startSize: new Vector(20, 20),
       material: {
-        color: "blue",
+        color: "pink",
         texture: particleTexture,
-        blendMode: "add-npm",
+        blendMode: "normal",
         name: "default",
       },
     },
     particleClass: PixiDustParticle,
     lifetime: 0,
-    maxParticleCount: 1000,
-    direction: new Vector(0, 0.1),
-    spawnRate: 300,
+    maxParticleCount: 10000,
+    direction: () => new Vector(0, gaussianRandom(0, 0)),
+    spawnRate: 1000,
     environments: [new Gravity({ force: new Vector(0, 0.2) })],
     modifiers: [
       new Tint(new Color([1.0, 0.1, 0.1]), new Color([0.8, 0.8, 0.0])),
     ],
-    spawnShape: new Spot(), //new Circle(50), //new Square(new Vector(100, 100)),
+    spawnShape: new Circle(50), //new Square(new Vector(100, 100)),
     particleContainer,
   });
 
@@ -63,7 +64,7 @@ const main = async () => {
     totalTime += ticker.deltaTime;
     const y = 500;
     const x = Math.sin(totalTime) * 100 + 500;
-    emitter.position.set(x, y);
+    // emitter.position.set(x, y);
     //wind.setWindDirection(new Vector(oszilation, 0));
   });
 };

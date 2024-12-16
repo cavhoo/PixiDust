@@ -3,6 +3,7 @@ import {
   EventEmitter,
   Graphics,
   nextPow2,
+  ParticleShader,
   Ticker,
   type ContainerOptions,
 } from "pixi.js";
@@ -95,17 +96,13 @@ export class PixiDustEmitter extends Emitter {
   }
 
   protected spawnParticle(): void {
-    const { maxParticleCount } = this.config;
-    const direction = new Vector(
-      gaussianRandom(0, 0.3),
-      gaussianRandom(-1, 0.3),
-    );
+    const { maxParticleCount, direction } = this.config;
     if (this.particles.length < maxParticleCount) {
       const { particleConfig } = this.config;
 
       const p = new this.config.particleClass({
         ...particleConfig,
-        direction,
+        direction: direction(),
       });
       const nextSpawn = this.config.spawnShape!.getSpawnPos();
       p.position.set(
@@ -119,7 +116,7 @@ export class PixiDustEmitter extends Emitter {
       if (deadParticle) {
         const nextSpawn = this.config.spawnShape!.getSpawnPos();
         this.emit(ParticleEvents.Died, deadParticle);
-        deadParticle.spawn(direction);
+        deadParticle.spawn(direction());
         deadParticle.position.set(
           this.position.x + nextSpawn.x,
           this.position.y + nextSpawn.y,
@@ -135,7 +132,10 @@ export class PixiDustEmitter extends Emitter {
       this.timeSinceLastSpawn += ticker.elapsedMS;
 
       if (this.timeSinceLastSpawn > spawnTime) {
-        this.spawnParticle();
+        const particlesToSpawn = Math.ceil(this.timeSinceLastSpawn / spawnTime);
+        for (let i = 0; i < particlesToSpawn; i++) {
+          this.spawnParticle();
+        }
         this.timeSinceLastSpawn = 0;
       }
 

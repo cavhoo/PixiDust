@@ -9,6 +9,7 @@ import {
 } from "pixi.js";
 import type { ParticleConfig } from "../config/particleConfig";
 import { Vector } from "../types/vector";
+import type { Material } from "../types/material";
 
 export interface ParticleOptions extends ContainerOptions, ParticleConfig {
   direction: Vector;
@@ -77,7 +78,14 @@ export class Particle extends Container {
 
     p.setSize(this.config.startSize.x, this.config.startSize.y);
     this._particleTexture = p;
+    this.applyMaterial(this.config.material);
     return p;
+  }
+
+  protected applyMaterial(material: Material): void {
+    if (material.color) {
+      this._particleTexture.tint = material.color;
+    }
   }
 
   public spawn(newDirection: Vector): void {
