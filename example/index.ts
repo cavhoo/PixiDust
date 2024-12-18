@@ -8,9 +8,6 @@ import {
   Vector,
   Wind,
 } from "../src/index.ts";
-import { Circle } from "../src/emitter/shapes/circle.ts";
-import { Square } from "../src/emitter/shapes/square.ts";
-import { Spot } from "../src/emitter/shapes/spot.ts";
 const main = async () => {
   const app = new Application();
 
@@ -46,17 +43,16 @@ const main = async () => {
     particleClass: PixiDustParticle,
     lifetime: 0,
     maxParticleCount: 10000,
-    direction: () => new Vector(0, gaussianRandom(0, 0)),
+    direction: () => new Vector(gaussianRandom(0, -2), gaussianRandom(0, 0)),
     spawnRate: 1000,
     environments: [new Gravity({ force: new Vector(0, 0.2) })],
     modifiers: [
       new Tint(new Color([1.0, 0.1, 0.1]), new Color([0.8, 0.8, 0.0])),
     ],
-    spawnShape: new Circle(50), //new Square(new Vector(100, 100)),
     particleContainer,
   });
 
-  emitter.position.set(1024 / 2, 500);
+  emitter.position.set(1024 / 2, 768 / 2);
   emitter.start();
   app.stage.addChild(emitter, particleContainer);
   let totalTime = 0;

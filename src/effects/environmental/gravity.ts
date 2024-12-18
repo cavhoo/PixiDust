@@ -1,5 +1,5 @@
-import type { Particle } from "../particle/particle";
-import { Vector } from "../types/vector";
+import type { Particle } from "../../particle/particle";
+import { Vector } from "../../types/vector";
 import { Environment } from "./environment";
 
 export interface GravityConfig {

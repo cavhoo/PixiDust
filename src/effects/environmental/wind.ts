@@ -1,5 +1,5 @@
-import type { Particle } from "../particle/particle";
-import type { Vector } from "../types/vector";
+import type { Particle } from "../../particle/particle";
+import type { Vector } from "../../types/vector";
 import { Environment } from "./environment";
 
 export class Wind extends Environment {
