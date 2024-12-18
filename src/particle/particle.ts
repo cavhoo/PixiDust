@@ -2,7 +2,6 @@ import {
   Container,
   Graphics,
   Sprite,
-  Texture,
   Ticker,
   type ColorSource,
   type ContainerOptions,
@@ -11,10 +10,18 @@ import type { ParticleConfig } from "../config/particleConfig";
 import { Vector } from "../types/vector";
 import type { Material } from "../types/material";
 
+
+/**
+ * Constructor options for a particle, combines PIXI.ContainerOptions and ParticleConfig
+ */
 export interface ParticleOptions extends ContainerOptions, ParticleConfig {
   direction: Vector;
 }
 
+
+/**
+ * Type of event dispatched from the particle
+ */
 export enum ParticleEvents {
   Spawn = "spawn",
   Died = "died",
@@ -63,6 +70,9 @@ export class Particle extends Container {
     this.addChild(this.createParticle());
   }
 
+  /**
+   * Creates a new particle texture
+   */
   protected createParticle(): Sprite | Graphics {
     const { texture, color } = this.config.material;
     let p;
@@ -82,12 +92,18 @@ export class Particle extends Container {
     return p;
   }
 
+  /**
+   * Applies a new material to the paritcle.
+   */
   protected applyMaterial(material: Material): void {
     if (material.color) {
       this._particleTexture.tint = material.color;
     }
   }
 
+  /**
+   * Spawns the particle with the provided direction, and resets the position back to 0,0.
+   */
   public spawn(newDirection: Vector): void {
     const { alphaDecay, useAlphaDecay } = this.config;
     this.renderable = true;
@@ -99,22 +115,38 @@ export class Particle extends Container {
     this.acceleration = this.acceleration.multiply(0);
   }
 
+  /**
+   * Applies a directional verctor the particle to determine the acceleration direction.
+   */
   public applyForce(force: Vector): void {
     this.acceleration = this.acceleration.add(force);
   }
 
+
+  /**
+   *  Set the tint of the particle.
+   */
   public override set tint(val: ColorSource) {
     this._particleTexture.tint = val;
   }
 
+  /**
+   *  Get the current tint value of the particle.
+   */
   public override get tint(): number {
     return this._particleTexture.tint;
   }
 
+  /**
+   *  Returns the current percentage of the particles lifetime.
+   */
   public get progress(): number {
     return 1 - this.currentLifeTime / this.lifeTime;
   }
 
+  /**
+   * Update function called once per frame.
+   */
   public tick(ticker: Ticker): void {
     if (this.isDead()) {
       this.renderable = false;
@@ -142,9 +174,19 @@ export class Particle extends Container {
     this.acceleration = this.acceleration.multiply(0);
   }
 
+  /**
+   * Check if the particle has exceeded it's lifespan
+   */
   public isDead(): boolean {
     return this.currentLifeTime < 0.0;
   }
+
+  /** 
+  * Set the current lifetime to 0
+  */
+  public kill(): void {
+    this.currentLifeTime = 0;
+  }
 }
 
-export class PixiDustParticle extends Particle {}
+export class PixiDustParticle extends Particle { }

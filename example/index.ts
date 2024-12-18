@@ -8,6 +8,8 @@ import {
   Vector,
   Wind,
 } from "../src/index.ts";
+import { Kill } from "../src/effects/zones/kill.ts";
+import { Spot } from "../src/emitter/shapes/spot.ts";
 const main = async () => {
   const app = new Application();
 
@@ -42,14 +44,16 @@ const main = async () => {
     },
     particleClass: PixiDustParticle,
     lifetime: 0,
-    maxParticleCount: 10000,
-    direction: () => new Vector(gaussianRandom(0, -2), gaussianRandom(0, 0)),
-    spawnRate: 1000,
+    maxParticleCount: 10,
+    direction: () => new Vector(0, -10),
+    spawnRate: 1,
     environments: [new Gravity({ force: new Vector(0, 0.2) })],
     modifiers: [
       new Tint(new Color([1.0, 0.1, 0.1]), new Color([0.8, 0.8, 0.0])),
     ],
     particleContainer,
+    spawnShape: new Spot(),
+    zones: [new Kill(new Vector(100, 100), new Vector(100, 100))]
   });
 
   emitter.position.set(1024 / 2, 768 / 2);

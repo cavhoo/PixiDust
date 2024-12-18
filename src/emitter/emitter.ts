@@ -4,10 +4,12 @@ import type { EmitterConfig } from "../config/emitterConfig";
 import type { Environment } from "../effects/environmental/environment";
 import type { Modifier } from "../modifiers/modifer";
 import { Spot } from "./shapes/spot";
+import type { Zone } from "../effects/zones/zone";
 
 export interface EmitterOptions extends EmitterConfig, ContainerOptions {
   environments?: Environment[];
   modifiers?: Modifier[];
+  zones?: Zone[];
 }
 
 export enum EmitterEvents {
@@ -24,6 +26,7 @@ export abstract class Emitter extends Container {
 
   protected environments: Environment[] = [];
   protected modifiers: Modifier[] = [];
+  protected zones: Zone[] = [];
   protected config: EmitterConfig;
 
   constructor({
@@ -37,6 +40,7 @@ export abstract class Emitter extends Container {
     particleClass,
     particleContainer,
     spawnShape,
+    zones,
     ...rest
   }: EmitterOptions) {
     super(rest);
@@ -53,6 +57,7 @@ export abstract class Emitter extends Container {
     this.ticker = Ticker.shared;
     this.environments = environments || [];
     this.modifiers = modifiers || [];
+    this.zones = zones || [];
     this.ticker.add((deltaTime) => this.tick(deltaTime));
   }
   /** Creates the particles for this emitter. */
@@ -138,6 +143,8 @@ export class PixiDustEmitter extends Emitter {
         // Apply modifier effects to the particle;
         this.modifiers.forEach((modifier) => modifier.apply(particle));
         particle.tick(ticker);
+
+        this.zones.forEach((zone) => zone.affect(particle));
       });
     }
   }
