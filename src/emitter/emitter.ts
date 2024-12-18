@@ -1,18 +1,8 @@
-import {
-  Container,
-  EventEmitter,
-  Graphics,
-  nextPow2,
-  ParticleShader,
-  Ticker,
-  type ContainerOptions,
-} from "pixi.js";
+import { Container, Graphics, Ticker, type ContainerOptions } from "pixi.js";
 import { Particle, ParticleEvents } from "../particle/particle";
 import type { EmitterConfig } from "../config/emitterConfig";
-import type { Environment } from "../environment/environment";
+import type { Environment } from "../effects/environmental/environment";
 import type { Modifier } from "../modifiers/modifer";
-import { Vector } from "../types/vector";
-import { gaussianRandom } from "../functions/randoms";
 import { Spot } from "./shapes/spot";
 
 export interface EmitterOptions extends EmitterConfig, ContainerOptions {
