@@ -10,6 +10,7 @@ import {
 } from "../src/index.ts";
 import { Kill } from "../src/effects/zones/kill.ts";
 import { Spot } from "../src/emitter/shapes/spot.ts";
+import { Circle } from "../src/emitter/shapes/circle.ts";
 const main = async () => {
   const app = new Application();
 
@@ -44,16 +45,16 @@ const main = async () => {
     },
     particleClass: PixiDustParticle,
     lifetime: 0,
-    maxParticleCount: 10,
+    maxParticleCount: 10000,
     direction: () => new Vector(0, -10),
-    spawnRate: 1,
+    spawnRate: 1000,
     environments: [new Gravity({ force: new Vector(0, 0.2) })],
     modifiers: [
       new Tint(new Color([1.0, 0.1, 0.1]), new Color([0.8, 0.8, 0.0])),
     ],
     particleContainer,
-    spawnShape: new Spot(),
-    zones: [new Kill(new Vector(100, 100), new Vector(100, 100))]
+    spawnShape: new Circle(30),
+    zones: [new Kill(new Vector(100, 100), new Vector(100, 100))],
   });
 
   emitter.position.set(1024 / 2, 768 / 2);

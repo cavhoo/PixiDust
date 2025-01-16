@@ -21,6 +21,7 @@ export enum EmitterEvents {
 export abstract class Emitter extends Container {
   protected ticker: Ticker;
   protected particles: Particle[] = [];
+  protected deadparticles: Particle[] = [];
   protected emitting: boolean = false;
   protected timeSinceLastSpawn: number = 0;
 
@@ -107,7 +108,7 @@ export class PixiDustEmitter extends Emitter {
       this.particles.push(p);
       this.config.particleContainer!.addChild(p);
     } else {
-      const deadParticle = this.particles.find((p) => p.isDead());
+      const deadParticle = this.deadparticles.pop();
       if (deadParticle) {
         const nextSpawn = this.config.spawnShape!.getSpawnPos();
         this.emit(ParticleEvents.Died, deadParticle);
@@ -143,6 +144,9 @@ export class PixiDustEmitter extends Emitter {
         // Apply modifier effects to the particle;
         this.modifiers.forEach((modifier) => modifier.apply(particle));
         particle.tick(ticker);
+        if (particle.isDead()) {
+          this.deadparticles.push(particle);
+        }
 
         this.zones.forEach((zone) => zone.affect(particle));
       });
