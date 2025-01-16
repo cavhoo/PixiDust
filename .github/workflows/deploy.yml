@@ -30,6 +30,7 @@ jobs:
         run: ls -la .
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
+        run: pwd
         with:
           path: build
 
