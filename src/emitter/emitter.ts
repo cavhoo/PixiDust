@@ -108,12 +108,12 @@ export class PixiDustEmitter extends Emitter {
       this.particles.push(p);
       this.config.particleContainer!.addChild(p);
     } else {
-      const deadParticle = this.deadparticles.pop();
-      if (deadParticle) {
+      const deadParticle = this.particles.find((p) => p.isDead());
+      if (deadParticle !== undefined) {
         const nextSpawn = this.config.spawnShape!.getSpawnPos();
         this.emit(ParticleEvents.Died, deadParticle);
-        deadParticle.spawn(direction());
-        deadParticle.position.set(
+        deadParticle!.spawn(direction());
+        deadParticle!.position.set(
           this.position.x + nextSpawn.x,
           this.position.y + nextSpawn.y,
         );
@@ -144,10 +144,6 @@ export class PixiDustEmitter extends Emitter {
         // Apply modifier effects to the particle;
         this.modifiers.forEach((modifier) => modifier.apply(particle));
         particle.tick(ticker);
-        if (particle.isDead()) {
-          this.deadparticles.push(particle);
-        }
-
         this.zones.forEach((zone) => zone.affect(particle));
       });
     }

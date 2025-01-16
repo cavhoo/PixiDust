@@ -3,11 +3,16 @@
 // @index(["./**/*.ts", "!**/__tests__", "!types.d.ts", "!index.ts"], f => `export * from "${f.path}";`)
 export * from "./config/emitterConfig";
 export * from "./config/particleConfig";
-export * from "./emitter/emitter";
 export * from "./effects/environmental/environment";
 export * from "./effects/environmental/gravity";
 export * from "./effects/environmental/wind";
+export * from "./effects/zones/kill";
 export * from "./effects/zones/zone";
+export * from "./emitter/emitter";
+export * from "./emitter/shapes/circle";
+export * from "./emitter/shapes/shape";
+export * from "./emitter/shapes/spot";
+export * from "./emitter/shapes/square";
 export * from "./functions/randoms";
 export * from "./modifiers/modifer";
 export * from "./modifiers/tint";

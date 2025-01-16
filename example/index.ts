@@ -7,10 +7,9 @@ import {
   Tint,
   Vector,
   Wind,
+  Circle,
+  Kill,
 } from "../src/index.ts";
-import { Kill } from "../src/effects/zones/kill.ts";
-import { Spot } from "../src/emitter/shapes/spot.ts";
-import { Circle } from "../src/emitter/shapes/circle.ts";
 const main = async () => {
   const app = new Application();
 
