@@ -1,47 +1,70 @@
 ---
+slug: /
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Getting started 
 
-Let's discover **Docusaurus in less than 5 minutes**.
 
-## Getting Started
+## Requirements
 
-Get started by **creating a new site**.
+You don't need a lot to use this library, it's made with as little depedencies as possible.
+So the only hard requirement is an installation of pixi.js in v8 or later.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
 
-### What you'll need
+## Installation
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+Using any package manager that can install npm packages.
 
-## Generate a new site
 
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
+With npm:
 ```bash
-npm init docusaurus@latest my-website classic
+npm install pixidust
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
+With yarn:
 
 ```bash
-cd my-website
-npm run start
+yarn add pixidust
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+With bun:
+```bash
+bun add pixidust
+```
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+## Usage
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Basic usage to create an emitter:
+```typescript
+
+import { Container } from "pixi.js";
+import { PixiDustEmitter, ParticleConfig, Material, Vector, PixiDustParticle } from "pixidust";
+
+
+const particleContainer = new Container();
+
+const particleConfig: ParticleConfig = {
+   lifetime: 300, // Lifetime in MS
+   decayFactor: 3, // Decay per Tick
+   startSize: new Vector(20,20), // Initial size in px
+   material: {
+     name: "default", // Name for material
+     blendMode: "normal"  // Blend mode same as PIXI.BLEND_MODES
+   }
+};
+
+const emitter = new PixiDustEmitter({
+  particleConfig,
+  maxParticleCount: 100, // How many particles are there
+  spawnRate: 10, // Particles per second
+  direction: Vector.UP, // Direction of the particles when spawning
+  particleClass: PixiDustParticle, // The particle to spawn
+  particleContainer, // The container the particles are spawned in
+})
+
+emitter.start(); // Start emitting particles
+
+```
+
+## Advanced options

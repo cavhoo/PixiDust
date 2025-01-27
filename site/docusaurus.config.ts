@@ -6,7 +6,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "PixiDust - Particle Engine",
-  tagline: "Magical like fairy dust",
+  tagline: "The zero dependency pixi.js particle system",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -35,7 +35,9 @@ const config: Config = {
     [
       "classic",
       {
-        docs: false,
+        docs: {
+          sidebarPath: "./sidebars.ts",
+        },
         blog: false,
         theme: {
           customCss: "./src/css/custom.css",
@@ -51,9 +53,13 @@ const config: Config = {
       title: "PixiDust",
       logo: {
         alt: "My Site Logo",
-        src: "img/logo.svg",
+        src: "img/pixidust.webp",
       },
-      items: [],
+      items: [
+        { to: "docs", label: "Docs" },
+        { to: "changelog", label: "Changelog" },
+        { to: "examples", label: "Examples" },
+      ],
     },
     footer: {
       style: "dark",

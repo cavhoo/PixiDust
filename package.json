@@ -19,6 +19,7 @@
   },
   "scripts": {
     "dev": "bunx --bun vite",
+    "docs": "cd site && bun run start",
     "build": "bun run scripts/build.ts",
     "prepublishOnly": "bun run build"
   },

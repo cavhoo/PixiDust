@@ -1,0 +1,8 @@
+{
+  "label": "Zones",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Zones for manipulating particles in 2D space."
+  }
+}
