@@ -55,11 +55,7 @@ const config: Config = {
         alt: "My Site Logo",
         src: "img/pixidust.webp",
       },
-      items: [
-        { to: "docs", label: "Docs" },
-        { to: "changelog", label: "Changelog" },
-        { to: "examples", label: "Examples" },
-      ],
+      items: [{ to: "docs", label: "Docs" }],
     },
     footer: {
       style: "dark",
