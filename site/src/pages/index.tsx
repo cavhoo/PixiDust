@@ -28,6 +28,11 @@ export default function Home(): ReactNode {
       description="Particle Engine for PIXI v8"
     >
       <HomepageHeader />
+      <div className={clsx("container", styles.buttons)}>
+        <a className="button button--info button--lg" href="docs">
+          Quickstart
+        </a>
+      </div>
     </Layout>
   );
 }
