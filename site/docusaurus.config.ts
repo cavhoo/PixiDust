@@ -53,7 +53,7 @@ const config: Config = {
       title: "PixiDust",
       logo: {
         alt: "My Site Logo",
-        src: "img/pixidust.webp",
+        src: "img/logo.png",
       },
       items: [{ to: "docs", label: "Docs" }],
     },
