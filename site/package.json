@@ -24,6 +24,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "pixi.js": "^8.5.2",
     "docusaurus-plugin-typedoc": "^1.2.2",
     "@docusaurus/module-type-aliases": "3.7.0",
     "@docusaurus/tsconfig": "3.7.0",
