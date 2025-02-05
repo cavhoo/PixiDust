@@ -20,10 +20,17 @@
   "scripts": {
     "dev": "bunx --bun vite",
     "docs": "cd site && bun run start",
+    "typedoc": "bunx typedoc",
     "build": "bun run scripts/build.ts",
     "prepublishOnly": "bun run build"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "docusaurus-plugin-typedoc": "^1.2.2",
+    "typedoc": "^0.27.6",
+    "typedoc-plugin-markdown": "^4.4.1"
+  },
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }

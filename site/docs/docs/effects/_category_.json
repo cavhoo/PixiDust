@@ -1,0 +1,8 @@
+{
+  "label": "Effects",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Effects that manipulate particles from the outside."
+  }
+}

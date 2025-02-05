@@ -1,0 +1,16 @@
+{
+  "entryPoints": ["./src"],
+  "plugin": ["typedoc-plugin-markdown"],
+  "outputs": [
+    {
+      "name": "markdown",
+      "path": "./site/docs/api"
+    }
+  ],
+  "sidebar": {
+    "autoConfigure": false
+  },
+  "hideBreadcrumbs": true,
+  "hidePageTitle": true,
+  "readme": "none"
+}

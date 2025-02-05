@@ -30,7 +30,30 @@ const config: Config = {
     defaultLocale: "en",
     locales: ["en"],
   },
+  plugins: [
+    [
+      "docusaurus-plugin-typedoc",
 
+      // Options
+      {
+        entryPoints: ["../src/index.ts"],
+        tsconfig: "../tsconfig.json",
+        readme: "none",
+        indexFormat: "table",
+        disableSources: true,
+        groupOrder: ["classes", "interfaces", "enums"],
+        sidebar: { pretty: false },
+        textContentMappings: {
+          "title.indexPage": "PixiDust API",
+          "title.memberPage": "{name}",
+        },
+        parametersFormat: "table",
+        enumMembersFormat: "table",
+        useCodeBlocks: true,
+        outputFileStrategy: "members",
+      },
+    ],
+  ],
   presets: [
     [
       "classic",
@@ -55,7 +78,10 @@ const config: Config = {
         alt: "My Site Logo",
         src: "img/logo.png",
       },
-      items: [{ to: "docs", label: "Docs" }],
+      items: [
+        { to: "docs", docId: "docs/intro", label: "Docs", type: "doc" },
+        { to: "api", docId: "api/index", label: "API", type: "doc" },
+      ],
     },
     footer: {
       style: "dark",

@@ -9,6 +9,8 @@ import {
   Wind,
   Circle,
   Kill,
+  Square,
+  Spot,
 } from "../src/index.ts";
 const main = async () => {
   const app = new Application();
@@ -52,7 +54,7 @@ const main = async () => {
       new Tint(new Color([1.0, 0.1, 0.1]), new Color([0.8, 0.8, 0.0])),
     ],
     particleContainer,
-    spawnShape: new Circle(30),
+    spawnShape: new Spot(), //new Square(new Vector(100, 100)),
     zones: [new Kill(new Vector(100, 100), new Vector(100, 100))],
   });
 
@@ -61,10 +63,10 @@ const main = async () => {
   app.stage.addChild(emitter, particleContainer);
   let totalTime = 0;
   app.ticker.add((ticker) => {
-    totalTime += ticker.deltaTime;
+    totalTime += ticker.deltaTime / 10;
     const y = 500;
-    const x = Math.sin(totalTime) * 100 + 500;
-    // emitter.position.set(x, y);
+    const x = Math.sin(totalTime) * 30 + 500;
+    emitter.position.set(x, y);
     //wind.setWindDirection(new Vector(oszilation, 0));
   });
 };

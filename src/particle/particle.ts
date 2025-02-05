@@ -10,14 +10,12 @@ import type { ParticleConfig } from "../config/particleConfig";
 import { Vector } from "../types/vector";
 import type { Material } from "../types/material";
 
-
 /**
  * Constructor options for a particle, combines PIXI.ContainerOptions and ParticleConfig
  */
 export interface ParticleOptions extends ContainerOptions, ParticleConfig {
   direction: Vector;
 }
-
 
 /**
  * Type of event dispatched from the particle
@@ -122,7 +120,6 @@ export class Particle extends Container {
     this.acceleration = this.acceleration.add(force);
   }
 
-
   /**
    *  Set the tint of the particle.
    */
@@ -181,12 +178,12 @@ export class Particle extends Container {
     return this.currentLifeTime < 0.0;
   }
 
-  /** 
-  * Set the current lifetime to 0
-  */
+  /**
+   * Set the current lifetime to 0
+   */
   public kill(): void {
     this.currentLifeTime = 0;
   }
 }
 
-export class PixiDustParticle extends Particle { }
+export class PixiDustParticle extends Particle {}

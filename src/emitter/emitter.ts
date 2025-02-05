@@ -55,6 +55,7 @@ export abstract class Emitter extends Container {
       spawnShape: spawnShape ?? new Spot(),
       particleContainer: particleContainer ?? this,
     };
+
     this.ticker = Ticker.shared;
     this.environments = environments || [];
     this.modifiers = modifiers || [];

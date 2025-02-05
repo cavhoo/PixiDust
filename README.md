@@ -1,12 +1,5 @@
 # PixiDust
 
-<!--toc:start-->
-- [PixiDust](#pixidust)
-  - [Particle System for the pixi.js rendering framework](#particle-system-for-the-pixijs-rendering-framework)
-    - [Goal](#goal)
-    - [Roadmap](#roadmap)
-<!--toc:end-->
-
 [![CI](https://github.com/cavhoo/PixiDust/actions/workflows/ci.yml/badge.svg)](https://github.com/cavhoo/PixiDust/actions/workflows/ci.yml)
 
 ## Particle System for the pixi.js rendering framework
@@ -21,7 +14,7 @@ if the use case requires it.
 ### Roadmap
 
 - [X] Basic particle functionality
-- [ ] $\color{Green}{Particle manipulators (Forces, Wells, Events) [In Progress]}$
+- [ ] Particle manipulators (Forces, Wells, Events) [In Progress]
 - [ ] Shaded particles (Vertex, Fragment)
 - [ ] Spine based particles (Allow spine animations on particles)
 - [ ] Publish to npm
