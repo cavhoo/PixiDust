@@ -22,6 +22,7 @@
     "docs": "cd site && bun run start",
     "typedoc": "bunx typedoc",
     "build": "bun run scripts/build.ts",
+    "build:docs": "cd site && bun install && bun run build",
     "prepublishOnly": "bun run build"
   },
   "files": [
