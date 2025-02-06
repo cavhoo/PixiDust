@@ -1,8 +1,0 @@
-{
-  "label": "Effects",
-  "position": 3,
-  "link": {
-    "type": "generated-index",
-    "description": "Global effects to manipulate particles."
-  }
-}

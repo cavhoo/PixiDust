@@ -2,7 +2,13 @@
 sidebar_position: 1
 ---
 
-# Killzone 
+# Zones
+
+Zones are pre defined areas within the particle container, they will only affect a particle once it's inside
+the zones boundaries.
+
+
+## Killzone
 
 A `Killzone` is like the name suggest an area in which the particle get's marked as dead  
 once it enters the boundary of the zone.
