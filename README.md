@@ -11,7 +11,7 @@ without much thought. It should provide extensibility for customization and ease
 if the use case requires it.
 
 
-### [Documentation](https://cavhoo.github.com/PixiDust)
+### [Documentation](https://cavhoo.github.io/PixiDust/)
 
 
 ### Roadmap
